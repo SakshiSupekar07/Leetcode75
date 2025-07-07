@@ -1,0 +1,47 @@
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+               if(digits.empty()) return {};
+          vector<string> m = {
+            "",
+            "",         
+            "abc", 
+            "def", 
+            "ghi",  
+            "jkl",  
+            "mno",  
+            "pqrs",
+            "tuv",  
+            "wxyz"  
+        };
+        queue <string>q;
+        q.push("");
+        for(char d:digits)
+        {
+            string letters=m[d-'0'];
+            int k=q.size();
+            while(k>0)
+            {
+                string curr=q.front();
+                q.pop();
+                for(char l:letters)
+                {
+                    q.push(curr+l);
+                
+                
+                }
+                k--;
+
+            }
+        }
+        vector <string>ans;
+        while(!q.empty())
+        {
+            ans.push_back(q.front());
+            q.pop();
+        }
+        return ans;
+
+        
+    }
+};
